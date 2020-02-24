@@ -14,7 +14,7 @@ COPY --from=sharpreflections/centos6-build-protobuf  $prefix $prefix
 COPY --from=sharpreflections/centos6-build-qt        $prefix $prefix
 
 # it's empty by default
-ENV LD_LIBRARY_PATH=$prefix/$gcc/bin:$prefix/$qt/lib:
+ENV LD_LIBRARY_PATH=$prefix/$gcc/lib64:$prefix/$qt/lib:
 # PSPro build dependencies                                                                                             
 RUN yum -y install @development xorg-x11-server-utils libX11-devel libSM-devel libxml2-devel libGL-devel \
                    libGLU-devel libibverbs-devel freetype-devel && \
