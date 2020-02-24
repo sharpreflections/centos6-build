@@ -3,6 +3,7 @@ LABEL maintainer="dennis.brendel@sharpreflections.com"
 
 ARG gcc=gcc-5.5.0
 ARG qt=qt-5.14.5-gcc
+ARG cmake=cmake-3.11.4
 
 ARG prefix=/opt
 
@@ -15,6 +16,7 @@ COPY --from=sharpreflections/centos6-build-qt        $prefix $prefix
 
 # it's empty by default
 ENV LD_LIBRARY_PATH=$prefix/$gcc/lib64:$prefix/$qt/lib:
+ENV PATH=$prefix/$qt/bin:$prefix/$cmake/bin:$prefix/$gcc/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 # PSPro build dependencies                                                                                             
 RUN yum -y install @development xorg-x11-server-utils libX11-devel libSM-devel libxml2-devel libGL-devel \
                    libGLU-devel libibverbs-devel freetype-devel && \
