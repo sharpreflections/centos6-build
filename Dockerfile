@@ -1,8 +1,8 @@
 FROM sharpreflections/centos6-build-binutils
 LABEL maintainer="dennis.brendel@sharpreflections.com"
 
-ARG gcc=gcc-5.5.0
-ARG qt=qt-5.14.5-gcc
+ARG gcc=gcc-4.8.5
+ARG qt=qt-5.9.9-gcc
 ARG cmake=cmake-3.11.4
 
 ARG prefix=/opt
@@ -10,9 +10,11 @@ ARG prefix=/opt
 WORKDIR /
 
 COPY --from=sharpreflections/centos6-build-cmake     $prefix $prefix
-COPY --from=sharpreflections/centos6-build-gcc       $prefix $prefix
 COPY --from=sharpreflections/centos6-build-protobuf  $prefix $prefix
-COPY --from=sharpreflections/centos6-build-qt        $prefix $prefix
+COPY --from=sharpreflections/centos6-build-gcc:gcc-4.8.5 $prefix $prefix
+COPY --from=sharpreflections/centos6-build-gcc:gcc-5.5.0 $prefix $prefix
+COPY --from=sharpreflections/centos6-build-qt:qt-5.9.9   $prefix $prefix
+COPY --from=sharpreflections/centos6-build-qt:qt-5.14.1  $prefix $prefix
 
 # it's empty by default
 ENV LD_LIBRARY_PATH=$prefix/$gcc/lib64:$prefix/$qt/lib:
