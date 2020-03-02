@@ -2,7 +2,7 @@ FROM sharpreflections/centos6-build-binutils
 LABEL maintainer="dennis.brendel@sharpreflections.com"
 
 ARG gcc=gcc-4.8.5
-ARG qt=qt-5.9.9-gcc
+ARG qt=qt-5.9.9-gcc485
 ARG cmake=cmake-3.11.4
 
 ARG prefix=/opt
