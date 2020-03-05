@@ -14,6 +14,7 @@ COPY --from=sharpreflections/centos6-build-protobuf  $prefix $prefix
 COPY --from=sharpreflections/centos6-build-gcc:gcc-4.8.5 $prefix $prefix
 COPY --from=sharpreflections/centos6-build-gcc:gcc-5.5.0 $prefix $prefix
 COPY --from=sharpreflections/centos6-build-qt:qt-5.9.9   $prefix $prefix
+COPY --from=sharpreflections/centos6-build-qt:qt-5.9.9_gcc-5.5.0 $prefix $prefix
 COPY --from=sharpreflections/centos6-build-qt:qt-5.14.1  $prefix $prefix
 
 # it's empty by default
