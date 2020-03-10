@@ -23,7 +23,7 @@ ENV LD_LIBRARY_PATH=$prefix/$gcc/lib64:$prefix/$qt/lib:
 ENV PATH=$prefix/$qt/bin:$prefix/$cmake/bin:$prefix/$gcc/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 # PSPro build dependencies                                                                                             
 RUN yum -y install @development xorg-x11-server-utils libX11-devel libSM-devel libxml2-devel libGL-devel \
-                   libGLU-devel libibverbs-devel freetype-devel && \
+                   libGLU-devel libibverbs-devel freetype-devel libicu && \
     # we need some basic fonts and manpath for the mklvars.sh script
     yum -y install urw-fonts man && \
     # Requirements for using software collections and epel
