@@ -43,9 +43,9 @@ runtime="$(get_container_runtime)"
 
 while [ $# -gt 0 ]; do
   case "$1" in
-    --icc19)   INTEL_DIR="$2";;
-    --license) LIC_DIR="$2";;
-    --podman) runtime="$(get_container_runtime podman)";;
+    --icc19)   INTEL_DIR="$2"; shift;;
+    --license) LIC_DIR="$2"; shift;;
+    --podman)  runtime="$(get_container_runtime podman)";;
   esac
   shift
 done
@@ -149,7 +149,6 @@ cd qtwebkit
 git checkout --track origin/5.212
 mkdir /build/qtwebkit/build
 cd /build/qtwebkit/build
-set -x
 
 # 2.8.0 only contains bug fixes according to the changelog, so 2.7.0 might also be fine
 sed --in-place 's/\(find_package(LibXml2\) 2.8.0/\1 2.7.0/' ../Source/cmake/OptionsQt.cmake
@@ -195,7 +194,6 @@ sed --in-place '/#include <wtf\/RefPtr.h>/a#define WEBCORE_EXPORT'           ../
 sed --in-place '/#include <wtf\/Vector.h>/a#define WEBCORE_EXPORT'           ../Source/WebCore/loader/LoaderStrategy.h
 
 sed --in-place '/#include <wtf\/text\/StringHash.h>/a#define WEBCORE_EXPORT' ../Source/WebCore/platform/LinkHash.h
-#sed --in-place '/#include <wtf\/RefCounted.h>/a#define WEBCORE_EXPORT'       ../Source/WebCore/page/VisitedLinkStore.h
 
 # ASSERT() is expanded although it should not on release builds..
 sed --in-place '/ASSERT(/d' ../Source/WebCore/platform/network/ResourceLoadPriority.h
@@ -207,8 +205,8 @@ sed --in-place '/WTF_MAKE_FAST_ALLOCATED;/d' ../Source/WTF/wtf/Lock.h
 sed --in-place '/#include \"ResourceHandleTypes.h\"/a#include <cstdint>' ../Source/WebCore/loader/ResourceLoaderOptions.h
 
 # Fix Qt private include paths
-sed --in-place 's:\(set(Qt5Gui_PRIVATE_INCLUDE_DIRS\) \"\"):\1 \"\$\{_qt5Gui_install_prefix\}/include/QtGui/\$\{Qt5Gui_VERSION_STRING\}\" \"\$\{_qt5Gui_install_prefix\}/include/QtGui/\$\{Qt5Gui_VERSION_STRING\}/QtGui\"):' $prefix/qt-${qt_major}${qt_minor}-icc19/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake
-sed --in-place 's:\(set(Qt5Core_PRIVATE_INCLUDE_DIRS\) \"\"):\1 \"\$\{_qt5Core_install_prefix\}/include/QtCore/\$\{Qt5Core_VERSION_STRING\}\" \"\$\{_qt5Core_install_prefix\}/include/QtCore/\$\{Qt5Core_VERSION_STRING\}/QtCore\"):' $prefix/qt-${qt_major}${qt_minor}-icc19/lib/cmake/Qt5Core/Qt5CoreConfig.cmake
+sed --in-place 's:\(set(Qt5Gui_PRIVATE_INCLUDE_DIRS\) \"\"):\1 \"\$\{_qt5Gui_install_prefix\}/include/QtGui/\$\{Qt5Gui_VERSION_STRING\}\" \"\$\{_qt5Gui_install_prefix\}/include/QtGui/\$\{Qt5Gui_VERSION_STRING\}/QtGui\"):' $prefix/qt-${qt_version}-icc19/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake
+sed --in-place 's:\(set(Qt5Core_PRIVATE_INCLUDE_DIRS\) \"\"):\1 \"\$\{_qt5Core_install_prefix\}/include/QtCore/\$\{Qt5Core_VERSION_STRING\}\" \"\$\{_qt5Core_install_prefix\}/include/QtCore/\$\{Qt5Core_VERSION_STRING\}/QtCore\"):' $prefix/qt-${qt_version}-icc19/lib/cmake/Qt5Core/Qt5CoreConfig.cmake
 
 # Fix build with intel compilers
 sed --in-place 's/\(if (NOT MSVC\).*/\1 AND NOT \$\{CMAKE_CXX_COMPILER_ID\} STREQUAL Intel)/' ../Source/cmake/OptionsCommon.cmake
