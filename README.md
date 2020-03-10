@@ -19,3 +19,10 @@ Includes:
 - updated binutils
 - some development tools
 
+Use the supplied *build\_qt\_qtwebkit\_icc19.sh* to compile a new Qt 5.9.9 and
+QtWebkit using the Intel Compiler. It will use docker by default, but you can
+also set it to use podman.
+
+The result is the image **sharpreflections/centos6-build-qt:qt-5.9.9\_icc-19.0**
+This image should then be pushed to docker.io and a rebuild of **centos6-build**
+should be triggered, so it includes the latest build
