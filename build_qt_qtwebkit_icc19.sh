@@ -259,5 +259,5 @@ make --jobs=2
 make install && rm -rf /build/*
 "
 
-podman commit centos6-build-qt-icc19 sharpreflections/centos6-build-qt:qt-5.9.9_icc-19.0
+$runtime commit centos6-build-qt-icc19 sharpreflections/centos6-build-qt:qt-5.9.9_icc-19.0
 
