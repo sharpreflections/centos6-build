@@ -155,7 +155,6 @@ mkdir build && cd build
                 -skip qtserialbus            \
                 -skip qtserialport           \
                 -skip qtspeech               \
-                -skip qtsvg                  \
                 -skip qttools                \
                 -skip qttranslations         \
                 -skip qtvirtualkeyboard      \
