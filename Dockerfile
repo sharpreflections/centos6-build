@@ -2,8 +2,7 @@ FROM sharpreflections/centos6-build-binutils
 LABEL maintainer="dennis.brendel@sharpreflections.com"
 
 ARG gcc=gcc-4.8.5
-ARG icc=icc-19.0
-ARG qt=qt-5.9.9
+ARG qt=qt-5.9.9-icc19
 ARG cmake=cmake-3.11.4
 
 ARG prefix=/opt
@@ -12,9 +11,9 @@ WORKDIR /
 
 COPY --from=sharpreflections/centos6-build-cmake     $prefix $prefix
 COPY --from=sharpreflections/centos6-build-protobuf  $prefix $prefix
-COPY --from=sharpreflections/centos6-build-gcc:$gcc  $prefix $prefix
-COPY --from=sharpreflections/centos6-build-qt:${qt}_${gcc} $prefix $prefix
-COPY --from=sharpreflections/centos6-build-qt:${qt}_${icc} $prefix $prefix
+COPY --from=sharpreflections/centos6-build-gcc:gcc-4.8.5 $prefix $prefix
+COPY --from=sharpreflections/centos6-build-qt:qt-5.9.9_gcc-4.8.5 $prefix $prefix
+COPY --from=sharpreflections/centos6-build-qt:qt-5.9.9_icc-19.0  $prefix $prefix
 
 RUN yum -y install @development xorg-x11-server-utils libX11-devel libSM-devel libxml2-devel libGL-devel \
                    libGLU-devel libibverbs-devel freetype-devel libicu && \
