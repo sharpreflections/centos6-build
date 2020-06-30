@@ -16,10 +16,6 @@ COPY --from=sharpreflections/centos6-build-gcc:$gcc  $prefix $prefix
 COPY --from=sharpreflections/centos6-build-qt:${qt}_${gcc} $prefix $prefix
 COPY --from=sharpreflections/centos6-build-qt:${qt}_${icc} $prefix $prefix
 
-# it's empty by default
-ENV LD_LIBRARY_PATH=$prefix/$gcc/lib64:$prefix/$qt/lib:
-ENV PATH=$prefix/$qt/bin:$prefix/$cmake/bin:$prefix/$gcc/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-# PSPro build dependencies                                                                                             
 RUN yum -y install @development xorg-x11-server-utils libX11-devel libSM-devel libxml2-devel libGL-devel \
                    libGLU-devel libibverbs-devel freetype-devel libicu && \
     # we need some basic fonts and manpath for the mklvars.sh script
