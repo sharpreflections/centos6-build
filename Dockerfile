@@ -17,7 +17,7 @@ RUN yum -y install @development xorg-x11-server-utils libX11-devel libSM-devel l
     # Requirements for using software collections and epel
     yum -y install yum-utils centos-release-scl.noarch epel-release.noarch && \
     # install the software collections
-    yum -y install sclo-git212 sclo-subversion19 && \
+    yum -y install sclo-git212 sclo-subversion19 devtoolset-8 && \
     # Misc developer tools
     yum -y install strace valgrind bc joe vim nano mc && \
     yum clean all
