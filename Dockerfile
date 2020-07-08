@@ -11,7 +11,7 @@ COPY --from=sharpreflections/centos6-build-gcc:gcc-4.8.5 $prefix $prefix
 COPY --from=sharpreflections/centos6-build-qt:qt-5.12.0_icc-19.0  $prefix $prefix
 
 RUN yum -y install @development xorg-x11-server-utils libX11-devel libSM-devel libxml2-devel libGL-devel \
-                   libGLU-devel libibverbs-devel freetype-devel libicu && \
+                   libGLU-devel libibverbs-devel freetype-devel libicu xkeyboard-config && \
     # we need some basic fonts and manpath for the mklvars.sh script
     yum -y install urw-fonts man && \
     # Requirements for using software collections and epel
