@@ -19,7 +19,8 @@ RUN yum -y install @development xorg-x11-server-utils libX11-devel libSM-devel l
     yum -y install yum-utils centos-release-scl.noarch epel-release.noarch && \
     # install the software collections
     yum -y install sclo-git212 sclo-subversion19 devtoolset-8 && \
-    # Misc developer tools
-    yum -y install strace valgrind bc joe vim nano mc && \
+    # Misc developer tools and xvfb for running QTest
+    yum -y install strace valgrind bc joe vim nano mc \
+                   xorg-x11-server-Xvfb && \
     yum clean all
 
