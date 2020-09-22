@@ -7,10 +7,9 @@ WORKDIR /
 
 COPY --from=sharpreflections/centos6-build-cmake     $prefix $prefix
 COPY --from=sharpreflections/centos6-build-protobuf  $prefix $prefix
-COPY --from=sharpreflections/centos6-build-gammaray  $prefix $prefix
-
 COPY --from=sharpreflections/centos6-build-gcc:gcc-4.8.5 $prefix $prefix
 
+COPY --from=sharpreflections/centos6-build-gammaray /p/ /p/
 COPY --from=sharpreflections/centos6-build-qt:qt-5.12.0_gcc-8.3.1 /p/ /p/
 COPY --from=sharpreflections/centos6-build-qt:qt-5.12.0_icc-19.0  /p/ /p/
 
