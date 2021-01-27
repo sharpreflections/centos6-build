@@ -21,13 +21,13 @@ RUN yum -y install yum-utils centos-release-scl.noarch epel-release.noarch && \
     yum clean all
 
 RUN yum -y install @development xorg-x11-server-utils libX11-devel libSM-devel libxml2-devel libGL-devel \
-                   libGLU-devel mesa-libEGL libibverbs-devel freetype-devel libicu xkeyboard-config && \
+                   libGLU-devel mesa-libEGL libibverbs-devel freetype-devel libicu xkeyboard-config \
     # we need some basic fonts and manpath for the mklvars.sh script
-    yum -y install urw-fonts man && \
+                   urw-fonts man \
     # install the software collections
-    yum -y install sclo-git212 sclo-subversion19 devtoolset-8 && \
+                   sclo-git212 sclo-subversion19 devtoolset-8 \
     # Misc developer tools and xvfb for running QTest
-    yum -y install strace valgrind bc joe vim nano mc \
+                   strace valgrind bc joe vim nano mc \
                    xorg-x11-server-Xvfb && \
     yum clean all
 
