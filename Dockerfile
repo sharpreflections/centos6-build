@@ -29,6 +29,8 @@ RUN yum -y install @development xorg-x11-server-utils libX11-devel libSM-devel l
     # Misc developer tools and xvfb for running QTest
                    strace valgrind bc joe vim nano mc \
                    xorg-x11-server-Xvfb \
+    # For building OSMesa
+                   python-argparse \
     # GMP is needed for delaunyT
                    gmp-devel && \
     yum clean all
