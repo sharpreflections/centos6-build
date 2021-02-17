@@ -28,8 +28,6 @@ RUN yum -y install @development xorg-x11-server-utils libX11-devel libSM-devel l
                    sclo-git212 sclo-subversion19 devtoolset-8 \
     # Misc developer tools and xvfb for running QTest
                    strace valgrind bc joe vim nano mc \
-                   xorg-x11-server-Xvfb \
-    # GMP is needed for delaunyT
-                   gmp-devel && \
+                   xorg-x11-server-Xvfb && \
     yum clean all
 
