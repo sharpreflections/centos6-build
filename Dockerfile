@@ -29,6 +29,8 @@ RUN yum -y install @development xorg-x11-server-utils libX11-devel libSM-devel l
     # Misc developer tools and xvfb for running QTest
                    strace valgrind bc joe vim nano mc \
                    xorg-x11-server-Xvfb \
+    # Requirements for building the FlexNet libraries
+                   redhat-lsb-core \
     # Requirements for our Squish setup
                    nc tigervnc-server && \
     yum clean all
