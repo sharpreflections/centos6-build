@@ -13,6 +13,8 @@ COPY --from=sharpreflections/centos6-build-gammaray /p/ /p/
 COPY --from=sharpreflections/centos6-build-qt:qt-5.12.0_gcc-8.3.1 /p/ /p/
 COPY --from=sharpreflections/centos6-build-qt:qt-5.12.0_icc-19.0  /p/ /p/
 
+COPY --from=sharpreflections/centos6-ninja  $prefix/ninja $prefix/ninja
+
     # Requirements for using software collections and epel
 RUN yum -y install yum-utils centos-release-scl.noarch epel-release.noarch && \
     # the repo files still point to the centos mirrorlist which is down
