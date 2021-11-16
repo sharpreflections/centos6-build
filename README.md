@@ -13,8 +13,6 @@ Includes:
 - Protobuf
   - 3.0
   - 3.5
-- Git
-  - 2.33.1
 - updated binutils
 - some development tools
 
