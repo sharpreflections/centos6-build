@@ -23,7 +23,7 @@ RUN yum -y install yum-utils centos-release-scl.noarch epel-release.noarch && \
     yum clean all
 
 RUN yum -y install @development xorg-x11-server-utils libX11-devel libSM-devel libxml2-devel libGL-devel \
-                   libGLU-devel mesa-libEGL libibverbs-devel freetype-devel libicu xkeyboard-config libcurl-devel \
+                   libGLU-devel mesa-libEGL libibverbs-devel freetype-devel libicu xkeyboard-config \
     # we need some basic fonts and manpath for the mklvars.sh script
                    urw-fonts man \
     # install the software collections
