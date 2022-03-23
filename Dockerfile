@@ -34,6 +34,9 @@ RUN yum -y install @development xorg-x11-server-utils libX11-devel libSM-devel l
     # Requirements for building the FlexNet libraries
                    redhat-lsb-core \
     # Requirements for our Squish setup
-                   nc tigervnc-server && \
+                   nc tigervnc-server \
+    # Requirements license entitlement
+                   tcl && \
+		   
     yum clean all
 
